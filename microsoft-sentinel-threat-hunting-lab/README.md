@@ -36,6 +36,7 @@ Connect a Windows Server hosted outside Azure to an Azure subscription using Azu
 ### Evidence
 
 ### Image 01
+![Image 01](../../screenshots/image01-connect-server-to-azure.png)
 Connected an on-premises Windows Server to Azure using Azure Arc.
 
 ### Image 02
