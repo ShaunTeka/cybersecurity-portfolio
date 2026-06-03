@@ -27,4 +27,4 @@ This project demonstrates the deployment of a hybrid security monitoring environ
 
 📂 **Project Documentation:**
 
-[View Project](./projects/microsoft-sentinel-threat-hunting-lab/README.md)
+[View Project](./microsoft-sentinel-threat-hunting-lab/README.md)
