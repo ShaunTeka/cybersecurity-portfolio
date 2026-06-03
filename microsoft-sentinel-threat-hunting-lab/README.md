@@ -82,9 +82,6 @@ Configure Microsoft Sentinel to collect security logs from the Azure Arc-connect
 ### Logged into Azure from a client machine.
 ![Azure Client Machine](screenshots/image08-azure-client-machine-login.png)
 
-### Navigated to:
-![Sentinel Data Connectors Search](screenshots/image09-sentinel-data-connectors-search.png)
-**Microsoft Sentinel → Configuration → Data Connectors**
 
 Searched for:
 
@@ -123,7 +120,7 @@ AZWINDCR
 - Azure Monitor Agent
 - Data Collection Rule Association
 - AZWINDCR
-![Ama Installation Success](screenshots/image16-ama-installation-success.png)
+
 
 ### Outcome
 
@@ -258,8 +255,6 @@ Added the finding as a bookmark.
 - Value: Computer
 - MITRE Tactic: Command and Control
 
-![Entity Mapping Command Control](screenshots/image26-entity-mapping-command-control.png)
-
 
 ### Outcome
 
@@ -365,7 +360,7 @@ Opened the Analytics Rule Wizard.
 - Host
 - HostName
 - Computer
-![Host Entity Mapping Rule](screenshots/image44-host-entity-mapping-rule.png)
+
 
 ### Retained default settings.
 ![Default Rule Settings](screenshots/image45-default-rule-settings.png)
@@ -452,7 +447,7 @@ searchtablea5be387c-494e-4275-8b8e-b447c07d99f3
 ### Selected:
 
 **Getting Started Guide for Microsoft Sentinel ML Notebooks**
-![Sentinel Notebook Template](screenshots/image62-sentinel-notebook-template.png)
+
 
 ### Launched Azure Machine Learning Studio.
 ![Launch Azure ML Studio](screenshots/image63-launch-azure-ml-studio.png)
