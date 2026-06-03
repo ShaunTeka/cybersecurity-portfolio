@@ -335,8 +335,7 @@ Using the same KQL query.
 ### Created a new NRT Rule.
 ![Create NRT Rule](screenshots/image38-create-nrt-rule.png)
 
-### Image 39
-Opened the Analytics Rule Wizard.
+### Opened the Analytics Rule Wizard.
 ![Analytics Rule Wizard](screenshots/image39-analytics-rule-wizard.png)
 
 ### Configured the detection query.
