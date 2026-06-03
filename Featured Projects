@@ -1,8 +1,0 @@
-## 🚀 Featured Projects
-
-| Project | Technologies |
-|----------|-------------|
-| Microsoft Sentinel Threat Hunting Lab | Sentinel, Azure Arc, KQL, MSTICPy |
-| SOC Analyst Lab | Splunk, SIEM, Log Analysis |
-| Microsoft Defender for Endpoint Lab | MDE, Threat Detection |
-| Active Directory Lab | Windows Server, AD DS |
