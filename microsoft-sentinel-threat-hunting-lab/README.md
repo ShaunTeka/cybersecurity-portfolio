@@ -40,10 +40,11 @@ Connect a Windows Server hosted outside Azure to an Azure subscription using Azu
 
 
 ### Opened Command Prompt and executed the onboarding command:
-![Azure Arc Onboarding Command](screenshots/image02-azure-arc-onboarding-command.png)
+
 ```powershell
 azcmagent connect -g "defender-RG" -l "eastus2" -s "e95997cc-409a-4d9e-b8ee-8cde3721b2bd"
 ```
+![Azure Arc Onboarding Command](screenshots/image02-azure-arc-onboarding-command.png)
 
 ### Azure authentication prompt generated and requested browser sign-in.
 ![Azure Authentication Prompt](screenshots/image03-azure-authentication-prompt.png)
@@ -55,11 +56,11 @@ azcmagent connect -g "defender-RG" -l "eastus2" -s "e95997cc-409a-4d9e-b8ee-8cde
 ![Azure Arc Resource Creation](screenshots/image05-azure-arc-resource-creation.png)
 
 ### Executed the following command to verify connectivity:
-![AZCMAGENT Show Command](screenshots/image06-azcmagent-show-command.png)
 
 ```powershell
 azcmagent show
 ```
+![AZCMAGENT Show Command](screenshots/image06-azcmagent-show-command.png)
 
 ### Verification confirmed the Azure Arc agent was connected successfully.
 ![Azure Arc Agent Connected](screenshots/image07-azure-arc-agent-connected.png)
