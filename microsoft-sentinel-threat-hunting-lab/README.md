@@ -35,35 +35,34 @@ Connect a Windows Server hosted outside Azure to an Azure subscription using Azu
 
 ### Evidence
 
-### Image 01
-![Image 01](../../screenshots/image01-connect-server-to-azure.png)
-Connected an on-premises Windows Server to Azure using Azure Arc.
+### Connecting an on-premises Windows Server to Azure using Azure Arc.
+![Azure Arc Server Connection](screenshots/image01-azure-arc-connect-server.png)
 
-### Image 02
-Opened Command Prompt and executed the onboarding command:
 
+### Opened Command Prompt and executed the onboarding command:
+![Azure Arc Onboarding Command](screenshots/image02-azure-arc-onboarding-command.png)
 ```powershell
 azcmagent connect -g "defender-RG" -l "eastus2" -s "e95997cc-409a-4d9e-b8ee-8cde3721b2bd"
 ```
 
-### Image 03
-Azure authentication prompt generated and requested browser sign-in.
+### Azure authentication prompt generated and requested browser sign-in.
+![Azure Authentication Prompt](screenshots/image03-azure-authentication-prompt.png)
 
-### Image 04
-Azure resources and dependencies downloaded automatically.
+### Azure resources and dependencies downloaded automatically.
+![Azure Resource Download](screenshots/image04-azure-resource-download.png)
 
-### Image 05
-Azure Arc resources successfully created and the server began connecting.
+### Azure Arc resources successfully created and the server began connecting.
+![Azure Arc Resource Creation](screenshots/image05-azure-arc-resource-creation.png)
 
-### Image 06
-Executed the following command to verify connectivity:
+### Executed the following command to verify connectivity:
+![AZCMAGENT Show Command](screenshots/image06-azcmagent-show-command.png)
 
 ```powershell
 azcmagent show
 ```
 
-### Image 07
-Verification confirmed the Azure Arc agent was connected successfully.
+### Verification confirmed the Azure Arc agent was connected successfully.
+![Azure Arc Agent Connected](screenshots/image07-azure-arc-agent-connected.png)
 
 ### Outcome
 
@@ -79,52 +78,51 @@ Configure Microsoft Sentinel to collect security logs from the Azure Arc-connect
 
 ### Evidence
 
-### Image 08
-Logged into Azure from a client machine.
+### Logged into Azure from a client machine.
+![Azure Client Machine](screenshots/image08-azure-client-machine-login.png)
 
-### Image 09
-Navigated to:
-
+### Navigated to:
+![Sentinel Data Connectors Search](screenshots/image09-sentinel-data-connectors-search.png)
 **Microsoft Sentinel → Configuration → Data Connectors**
 
 Searched for:
 
 **Windows Security Events via AMA**
 
-### Image 10
-Opened the connector page.
+### Opened the connector page.
+![Windows Security Events Ama](screenshots/image10-windows-security-events-ama.png)
 
-### Image 11
-Selected:
+### Selected:
 
 **+ Create Data Collection Rule**
+![Create Data Collection Rule](screenshots/image11-create-data-collection-rule.png)
 
-### Image 12
-Created a Data Collection Rule named:
+### Created a Data Collection Rule named:
 
 ```text
 AZWINDCR
 ```
+![AZWINDCR Rule Name](screenshots/image12-azwindcr-rule-name.png)
 
-### Image 13
-Selected:
+### Selected:
 
 - Subscription
 - Resource Group: defender-RG
 - Server: WINServer
+![Select Windserver Resource](screenshots/image13-select-winserver-resource.png)
 
-### Image 14
-Retained default event collection settings.
+### Retained default event collection settings.
+![Data Collection Settings](screenshots/image14-data-collection-settings.png)
 
-### Image 15
-Validation completed successfully.
+### Validation completed successfully.
+![Data Collection Validation](screenshots/image15-data-collection-validation.png)
 
-### Image 16
-Successfully deployed:
+### Successfully deployed:
 
 - Azure Monitor Agent
 - Data Collection Rule Association
 - AZWINDCR
+![Ama Installation Success](screenshots/image16-ama-installation-success.png)
 
 ### Outcome
 
@@ -138,18 +136,17 @@ Successfully deployed:
 
 Generate malicious-like DNS traffic for threat hunting exercises.
 
-### Image 17
-Created a PowerShell file:
+### Created a PowerShell file:
 
 ```powershell
 notepad c2.ps1
 ```
+![Create c2 Script](screenshots/image17-create-c2-script.png)
 
-### Image 18
-Created a new file after Windows could not locate the script.
+### Created a new file after Windows could not locate the script.
+![Create New c2 File](screenshots/image18-create-new-c2-file.png)
 
-### Image 19
-Added the DNS Command-and-Control simulation script.
+### Added the DNS Command-and-Control simulation script.
 
 ```powershell
 param(
@@ -195,12 +192,13 @@ Do {
 }
 Until ($TimeNow -ge $RunEnd)
 ```
+![Powershell Script](screenshots/image19-c2-powershell-script.png)
 
-### Image 20
-Executed the PowerShell script.
+### Executed the PowerShell script.
+![Execute c2 Script](screenshots/image20-execute-c2-script.png)
 
-### Image 21
-Script executed in the background and generated DNS beaconing activity.
+### Script executed in the background and generated DNS beaconing activity.
+![c2 Background Execution](screenshots/image21-c2-background-execution.png)
 
 ### MITRE ATT&CK Mapping
 
@@ -220,11 +218,10 @@ Script executed in the background and generated DNS beaconing activity.
 
 Identify suspicious PowerShell executions.
 
-### Image 22
-Opened Microsoft Sentinel Logs.
+### Opened Microsoft Sentinel Logs.
+![Open Sentinel Logs](screenshots/image22-open-sentinel-logs.png)
 
-### Image 23
-Created the following KQL query:
+### Created the following KQL query:
 
 ```kql
 let lookback = 2d;
@@ -238,26 +235,30 @@ SecurityEvent
     by Computer, SubjectUserName, PwshParam
 | order by count_ desc nulls last
 ```
+![Open Sentinel Logs](screenshots/image23-powershell-kql-query.png)
 
-### Image 24
-Reviewed query results.
 
-### Image 25
-Selected the result showing:
+### Reviewed query results.
+![KQL Query Results](screenshots/image24-kql-query-results.png)
+
+### Selected the result showing:
 
 ```text
 -file c2.ps1
 ```
+![Bookmark c2 Activity](screenshots/image25-bookmark-c2-activity.png)
 
 Added the finding as a bookmark.
 
-### Image 26
-Configured:
+### Configured:
 
 - Entity Type: Host
 - Identifier: Hostname
 - Value: Computer
 - MITRE Tactic: Command and Control
+
+![Entity Mapping Command Control](screenshots/image26-entity-mapping-command-control.png)
+
 
 ### Outcome
 
@@ -267,38 +268,40 @@ Configured:
 
 # 🎯 Phase 5: Creating a Hunting Query
 
-### Image 27
-Opened:
+### Opened:
 
 **Threat Management → Hunting**
+![Open Hunting Pagel](screenshots/image27-open-hunting-page.png)
 
-### Image 28
-Selected:
+### Selected:
 
 **Create New Query**
+![Create Hunting Query](screenshots/image28-create-hunting-query.png)
 
-### Image 29
-Created a hunting query named:
+
+### Created a hunting query named:
 
 ```text
 PowerShell Hunt
 ```
+![Powershell Hunt Query](screenshots/image29-powershell-hunt-query.png)
 
 Using the same KQL query.
 
-### Image 30
-Configured:
+### Configured:
 
 - Host Entity Mapping
 - HostName Identifier
 - Computer Value
 - Command and Control ATT&CK Classification
 
-### Image 31
-Executed the hunting query.
+![Host Entity Mapping](screenshots/image30-host-entity-mapping.png)
 
-### Image 32
-Reviewed results.
+### Executed the hunting query.
+![Run Hunting Query](screenshots/image31-run-hunting-query.png)
+
+### Reviewed results.
+![Hunting Query Results](screenshots/image32-hunting-query-results.png)
 
 ### Outcome
 
@@ -308,22 +311,22 @@ Reviewed results.
 
 # 🔍 Phase 6: Investigation
 
-### Image 33
-Added results to LiveStream.
+### Added results to LiveStream.
+![Add To Livestream](screenshots/image33-add-to-livestream.png)
 
-### Image 34
-Selected:
+### Selected:
 
 **Investigate Bookmark**
+![Investigate Bookmark](screenshots/image34-investigate-bookmark.png)
 
-### Image 35
-Opened the investigation graph.
+### Opened the investigation graph.
+![Investigate Graph](screenshots/image35-investigation-graph.png)
 
-### Image 36
-Explored relationships between security events.
+### Explored relationships between security events.
+![Security Event Analysis](screenshots/image36-security-event-analysis.png)
 
-### Image 37
-Reviewed an existing incident.
+### Reviewed an existing incident.
+![Existing Incident](screenshots/image37-existing-incident.png)
 
 ### Outcome
 
@@ -333,39 +336,45 @@ Reviewed an existing incident.
 
 # ⚡ Phase 7: Near Real-Time Analytics Rule
 
-### Image 38
-Created a new NRT Rule.
+### Created a new NRT Rule.
+![Create NRT Rule](screenshots/image38-create-nrt-rule.png)
 
 ### Image 39
 Opened the Analytics Rule Wizard.
+![Analytics Rule Wizard](screenshots/image39-analytics-rule-wizard.png)
 
-### Image 40
-Configured the detection query.
+### Configured the detection query.
+![NRT Rule Query](screenshots/image40-nrt-rule-query.png)
 
-### Image 41
-Validated query results.
 
-### Image 42
-Tested using current results.
+### Validated query results.
+![Query Validation Results](screenshots/image41-query-validation-results.png)
 
-### Image 43
-Reviewed generated graph.
 
-### Image 44
-Configured entity mapping:
+### Tested using current results.
+![Test Current Results](screenshots/image42-test-current-results.png)
+
+
+### Reviewed generated graph.
+![Rule Test Graph](screenshots/image43-rule-test-graph.png)
+
+
+### Configured entity mapping:
 
 - Host
 - HostName
 - Computer
+![Host Entity Mapping Rule](screenshots/image44-host-entity-mapping-rule.png)
 
-### Image 45
-Retained default settings.
+### Retained default settings.
+![Default Rule Settings](screenshots/image45-default-rule-settings.png)
 
-### Image 46
-Retained default automation settings.
+### Retained default automation settings.
+![Default Automation Settings](screenshots/image46-default-automation-settings.png)
 
-### Image 47
-Saved and created the analytics rule.
+### Saved and created the analytics rule.
+![Save Analytics Rule](screenshots/image47-save-analytics-rule.png)
+
 
 ### Outcome
 
@@ -375,51 +384,52 @@ Saved and created the analytics rule.
 
 # 🔍 Phase 8: Search Jobs & MITRE ATT&CK Hunting
 
-### Image 48
-Created a Search Job.
+### Created a Search Job.
+![Create Search Job](screenshots/image48-create-search-job.png)
 
-### Image 49
-Searched for:
+### Searched for:
 
 ```text
 reg.exe
 ```
+![Search Reg Exe](screenshots/image49-search-reg-exe.png)
 
-### Image 50
-Reviewed query window.
+### Reviewed query window.
+![Search Job Query Window](screenshots/image50-search-job-query-window.png)
 
-### Image 51
-Created Search Job:
+
+### Created Search Job:
 
 ```text
 searchtablea5be387c-494e-4275-8b8e-b447c07d99f3
 ```
+![Search Job Results Table](screenshots/image51-search-job-results-table.png)
 
-### Image 52
-Created a hunt combining multiple queries.
+### Created a hunt combining multiple queries.
+![Create Mitre Hunt](screenshots/image52-create-mitre-hunt.png)
 
-### Image 53
-Filtered active rules.
+### Filtered active rules.
+![Filter Active Rules](screenshots/image53-filter-active-rules.png)
 
-### Image 54
-Selected Hunting Queries.
+### Selected Hunting Queries.
+![Filter Hunting Queries](screenshots/image54-filter-hunting-queries.png)
 
-### Image 55
-Reviewed:
+### Reviewed:
 
 **Account Manipulation (T1098)**
+![Account Manipulation Technique](screenshots/image55-account-manipulation-technique.png)
 
-### Image 56
-Executed selected queries.
+### Executed selected queries.
+![Run Selected Queries](screenshots/image56-run-selected-queries.png)
 
-### Image 57
-Created a new Hunt.
+### Created a new Hunt.
+![Create New Hunt](screenshots/image57-create-new-hunt.png)
 
-### Image 58
-Added filters:
+### Added filters:
 
 - Persistence
 - T1098
+![Persistence T1098 Filters](screenshots/image58-persistence-t1098-filters.png)
 
 ### Outcome
 
@@ -429,46 +439,45 @@ Added filters:
 
 # 🤖 Phase 9: Microsoft Sentinel Notebooks & Azure Machine Learning
 
-### Image 59
-Opened Sentinel Notebooks.
+### Opened Sentinel Notebooks.
+![Open Sentinel Notebooks](screenshots/image59-open-sentinel-notebooks.png)
 
-### Image 60
-Created an Azure Machine Learning Workspace.
+### Created an Azure Machine Learning Workspace.
+![Create Azure ML Workspace](screenshots/image60-create-azure-ml-workspace.png)
 
-### Image 61
-Deployment completed successfully.
+### Deployment completed successfully.
+![Azure ML Deployment Complete](screenshots/image61-azure-ml-deployment-complete.png)
 
-### Image 62
-Selected:
+### Selected:
 
 **Getting Started Guide for Microsoft Sentinel ML Notebooks**
+![Sentinel Notebook Template](screenshots/image62-sentinel-notebook-template.png)
 
-### Image 63
-Launched Azure Machine Learning Studio.
+### Launched Azure Machine Learning Studio.
+![Launch Azure ML Studio](screenshots/image63-launch-azure-ml-studio.png)
 
-### Image 64
-Created compute instance:
+### Created compute instance:
 
 ```text
 shaunmonwabisiteka
 ```
+![Create Compute Instance](screenshots/image64-create-compute-instance.png)
 
-### Image 65
-Continued compute instance configuration.
+### Continued compute instance configuration.
+![Configure Compute Instance](screenshots/image65-configure-compute-instance.png)
 
-### Image 66
-Verified notebook execution environment.
+### Verified notebook execution environment.
+![Notebook Execution Environment](screenshots/image66-notebook-execution-environment.png)
 
-### Image 67
-Installed MSTICPy.
+### Installed MSTICPy.
+![Install Msticpy](screenshots/image67-install-msticpy.png)
 
-### Image 68
-Generated:
+### Generated:
 
 ```yaml
 msticpyconfig.yaml
 ```
-
+![MTICPY](screenshots/image68-msticpy-config-created.png)
 ### Outcome
 
 ✅ Integrated Microsoft Sentinel with Azure Machine Learning and MSTICPy.
@@ -524,11 +533,3 @@ msticpyconfig.yaml
 
 ---
 
-## 👨‍💻 Author
-
-### Shaun Monwabisi Teka
-
-**Cybersecurity Analyst | SOC Analyst | Threat Hunter | Cloud Security**
-
-- GitHub: [ShaunTeka](https://github.com/ShaunTeka)
-- LinkedIn: [shaunmonwabisiteka](https://www.linkedin.com/in/shaunmonwabisiteka)
