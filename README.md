@@ -23,8 +23,8 @@ This project demonstrates the deployment of a hybrid security monitoring environ
 - Conducted investigations using Sentinel Investigation Graphs
 - Integrated Azure Machine Learning and MSTICPy
 
-📂 **Project Documentation:**
+
 
 📂 **Project Documentation:**
 
-[View Project](./projects/microsoft-sentinel-threat-hunting-lab/)
+[View Project](./projects/microsoft-sentinel-threat-hunting-lab/README.md)
