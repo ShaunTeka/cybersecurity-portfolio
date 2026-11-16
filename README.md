@@ -1,4 +1,4 @@
-## ☁️ Microsoft Sentinel Threat Hunting & Command-and-Control Detection Lab
+## Microsoft Sentinel Threat Hunting & Command-and-Control Detection Lab
 
 This project demonstrates the deployment of a hybrid security monitoring environment using Azure Arc, Microsoft Sentinel, Azure Monitor Agent (AMA), KQL, and Azure Machine Learning.
 
